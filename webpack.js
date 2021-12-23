@@ -10,17 +10,6 @@ export default {
   resolve: {
     extensions: ['.js', '.jsx'],
   },
-  // output: {
-  //   path: path.join(__dirname, 'dist', 'public'),
-  //   publicPath: '/assets/',
-  // },
-  // devServer: {
-  //   compress: true,
-  //   port: 8080,
-  //   host: '0.0.0.0',
-  //   publicPath: '/assets/',
-  //   historyApiFallback: true,
-  // },
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: "[name].[hash].js",
