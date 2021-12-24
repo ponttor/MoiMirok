@@ -1,8 +1,9 @@
+
 import axios from 'axios';
 import * as yup from 'yup';
 import { useFormik } from 'formik';
 import React from 'react';
-// import AuthContext from '../AuthContext.js';
+import { Redirect, useHistory } from "react-router-dom";
 
 const validationSchema = yup.object({
   username: yup.string().min(3, 'Please enter your real name').required('Full name is required'),
@@ -10,22 +11,19 @@ const validationSchema = yup.object({
 });
 
 const Login = () => {
-  // console.log('login');
-  // const { isAuth, setIsAuth } = useContext(AuthContext);
-  // setIsAuth(true);
+  const history = useHistory();
+
   const onSubmit = async (values) => {
     try {
       console.log(values);
       const response = await axios.post('/api/v1/login', values);
+      console.log(`history: ${history}`)
       localStorage.setItem('token', response.data.token);
-      console.log(response.data)
-      // setIsAuth(true);
+      history.push('/')
     } catch (err) {
       console.log(err.response.statusText);
     }
   };
-
-
 
   const formik = useFormik({
     initialValues: {
@@ -37,6 +35,7 @@ const Login = () => {
   });
 
   return (
+    <>
     <div className="container mt-3 ">
       <div className="row d-flex justify-content-center align-items-center">
         <div className="col-md-5 ">
@@ -81,6 +80,7 @@ const Login = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 

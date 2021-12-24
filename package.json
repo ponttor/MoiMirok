@@ -2,7 +2,7 @@
   "name": "moimirok",
   "version": "1.0.0",
   "description": "illustration world",
-  "main": "index.js",
+  "main": "index.jsx",
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
