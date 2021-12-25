@@ -19,7 +19,7 @@ const Login = () => {
       const response = await axios.post('/api/v1/login', values);
       console.log(`history: ${history}`)
       localStorage.setItem('token', response.data.token);
-      history.push('/')
+      history.replace("/")
     } catch (err) {
       console.log(err.response.statusText);
     }

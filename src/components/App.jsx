@@ -17,15 +17,22 @@ const App = ({ socket }) => {
   // }
   console.log(token);
 
+  const isAuth = localStorage.getItem('token');
+  console.log(`isAuth: ${isAuth}`);
+
+  const pageRender = () => {
+    isAuth ? history.replace("/") : history.replace("/login");
+  };
   return (
     <>
       <Router history={history}>
+        {pageRender()}
         <Switch>
           <Route exact path="/login">
-          {token ? <Redirect to="/" /> : <Login />}
+          <Login />
           </Route>
           <Route exact path="/">
-          {!token ? <Redirect to="/login" /> : <Chat />}
+          <Chat />
           </Route>
           <Route exact path="*" component={Page404} />
         </Switch>
