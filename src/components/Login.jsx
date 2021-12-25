@@ -2,7 +2,7 @@
 import axios from 'axios';
 import * as yup from 'yup';
 import { useFormik } from 'formik';
-import React from 'react';
+import React, {useState} from 'react';
 import { Redirect, useHistory } from "react-router-dom";
 
 const validationSchema = yup.object({
@@ -10,7 +10,7 @@ const validationSchema = yup.object({
   password: yup.string().required('Password is required'),
 });
 
-const Login = () => {
+const Login = ({setToken}) => {
   const history = useHistory();
 
   const onSubmit = async (values) => {
@@ -19,7 +19,8 @@ const Login = () => {
       const response = await axios.post('/api/v1/login', values);
       console.log(`history: ${history}`)
       localStorage.setItem('token', response.data.token);
-      history.replace("/")
+      setToken(response.data.token);
+      history.push("/")
     } catch (err) {
       console.log(err.response.statusText);
     }

@@ -2,7 +2,7 @@
 
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const { WebpackCloudinaryPlugin } = require('webpack-cloudinary-plugin');
+// const { WebpackCloudinaryPlugin } = require('webpack-cloudinary-plugin');
 
 const mode = process.env.NODE_ENV || 'development';
 
@@ -25,15 +25,15 @@ module.exports = {
   },
   plugins: [
     new MiniCssExtractPlugin(),
-    new WebpackCloudinaryPlugin({
-      credentials: {
-          cloud_name: "ponttor",
-          api_key: "251954813356599",
-          api_secret: "NpMH16IS0fJ0hBJfUmBc2enc1nY"
-      },
-      remote: "assets",
-      resource_type: "image"
-    })
+    // new WebpackCloudinaryPlugin({
+    //   credentials: {
+    //       cloud_name: "ponttor",
+    //       api_key: "251954813356599",
+    //       api_secret: "NpMH16IS0fJ0hBJfUmBc2enc1nY"
+    //   },
+    //   remote: "assets",
+    //   resource_type: "image"
+    // })
   ],
   module: {
     rules: [
